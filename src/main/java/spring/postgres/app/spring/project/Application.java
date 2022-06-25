@@ -5,7 +5,11 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.RestController;
+import spring.postgres.app.spring.project.entities.Spid;
+import spring.postgres.app.spring.project.entities.Status;
+import spring.postgres.app.spring.project.entities.Type;
 import spring.postgres.app.spring.project.entities.User;
+import spring.postgres.app.spring.project.services.SpidService;
 import spring.postgres.app.spring.project.services.UserService;
 
 
@@ -15,12 +19,19 @@ public class Application implements CommandLineRunner {
     @Autowired
     UserService userService;
 
+    @Autowired
+    SpidService spidService;
+
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
     }
 
     @Override
     public void run(String... args) {
-        System.out.println(userService.createUser(new User( "Igli", "Koxha", "..", "Igli_Koxha", "lol", "abedinieraldo@gmail.com")));
+        User igli = new User( "Igli", "Koxha", "..", "Igli_Koxha", "lol", "abedinieraldo@gmail.com");
+        System.out.println(userService.createUser(igli));
+
+        Spid spid = new Spid(igli, Status.APPROVED, Type.LEVEL_1);
+        System.out.println(spidService.createSpid(spid));
     }
 }

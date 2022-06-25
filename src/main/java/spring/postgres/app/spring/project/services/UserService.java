@@ -10,7 +10,7 @@ import spring.postgres.app.spring.project.repository.UserRepository;
 @Service
 public class UserService {
     @Autowired
-    UserRepository userRepository;
+    private UserRepository userRepository;
 
     public User createUser(User user) {
         return userRepository.save(user);

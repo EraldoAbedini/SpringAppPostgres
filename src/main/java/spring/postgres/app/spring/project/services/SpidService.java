@@ -1,6 +1,5 @@
 package spring.postgres.app.spring.project.services;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import spring.postgres.app.spring.project.entities.Spid;
 import spring.postgres.app.spring.project.entities.Status;
@@ -11,8 +10,11 @@ import java.util.Optional;
 
 @Service
 public class SpidService {
-    @Autowired
-    private SpidRepository repository;
+    private final SpidRepository repository;
+
+    public SpidService(SpidRepository repository) {
+        this.repository = repository;
+    }
 
     public Spid createSpid(Spid addnewspid) {
         return (addnewspid.getStatus().equals(Status.PENDING)) ? repository.save(addnewspid) : null;
@@ -29,7 +31,7 @@ public class SpidService {
 
     public void deleteSpid(long id) {
         Spid deleteSpid = repository.getReferenceById(id);
-        repository.deleteById(id);
+        if (deleteSpid != null) repository.deleteById(id);
     }
 
     public Spid changeSpidStatus(long userId, long spidId) {
