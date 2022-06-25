@@ -2,8 +2,8 @@ package spring.postgres.app.spring.project.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import spring.postgres.app.spring.project.repository.UserRepository;
 import spring.postgres.app.spring.project.entities.User;
+import spring.postgres.app.spring.project.repository.UserRepository;
 
 @Service
 public class UserService {
@@ -29,11 +29,14 @@ public class UserService {
         return userRepository.save(userToBeEdited);
     }
 
+    public void deleteUser(long id) {
+        User deleteUser = userRepository.getReferenceById(id);
+        userRepository.deleteById(id);
+    }
+
     public User editUserName(long id, String name) {
         User userToBeEdited = userRepository.getReferenceById(id);
         userToBeEdited.setName(name);
         return userRepository.save(userToBeEdited);
     }
-
-
 }
