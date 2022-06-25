@@ -2,7 +2,7 @@ package spring.postgres.app.spring.project.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import spring.postgres.app.spring.project.Repository.UserRepository;
+import spring.postgres.app.spring.project.repository.UserRepository;
 import spring.postgres.app.spring.project.entities.User;
 
 @Service
@@ -34,5 +34,6 @@ public class UserService {
         userToBeEdited.setName(name);
         return userRepository.save(userToBeEdited);
     }
+
 
 }

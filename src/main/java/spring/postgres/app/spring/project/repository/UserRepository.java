@@ -1,4 +1,4 @@
-package spring.postgres.app.spring.project.Repository;
+package spring.postgres.app.spring.project.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -9,8 +9,6 @@ import spring.postgres.app.spring.project.entities.User;
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
 
-    @Query(value = "SELECT * FROM spid WHERE id = : toFindId ",
-            nativeQuery = true)
+    @Query(value = "SELECT * FROM spid WHERE id = : toFindId ", nativeQuery = true)
     public Spid searchSpid(long toFindId );
-
 }

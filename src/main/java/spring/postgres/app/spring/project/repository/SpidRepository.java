@@ -1,4 +1,4 @@
-package spring.postgres.app.spring.project.Repository;
+package spring.postgres.app.spring.project.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
