@@ -13,7 +13,7 @@ import java.security.Timestamp;
 @NoArgsConstructor
 @Table(name = "spid")
 public class Spid extends Base {
-    @OneToOne(cascade = {CascadeType.ALL})
+    @OneToOne
     private User user;
 
     @Enumerated(EnumType.STRING)

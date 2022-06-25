@@ -11,6 +11,7 @@ import spring.postgres.app.spring.project.entities.Type;
 import spring.postgres.app.spring.project.entities.User;
 import spring.postgres.app.spring.project.services.SpidService;
 import spring.postgres.app.spring.project.services.UserService;
+
 @SpringBootApplication
 @RestController
 public class Application implements CommandLineRunner {
@@ -20,15 +21,15 @@ public class Application implements CommandLineRunner {
     @Autowired
     SpidService spidService;
 
-    public static void main(String[] args) {
+    public static void main(String[] args)   {
         SpringApplication.run(Application.class, args);
     }
 
     @Override
     public void run(String... args) {
-        User igli = new User( "Igli", "Koxha", "..", "Igli_Koxha", "lol", "abedinieraldo@gmail.com");
+        User igli = new User("Igli", "Koxha", "..", "Igli_Koxha", "lol", "iglikoxha@gmail.com");
         System.out.println(userService.createUser(igli));
-        Spid spid = new Spid(igli, Status.APPROVED, Type.LEVEL_1);
+        Spid spid = new Spid(igli, Status.PENDING, Type.LEVEL_1);
         System.out.println(spidService.createSpid(spid));
     }
 }
