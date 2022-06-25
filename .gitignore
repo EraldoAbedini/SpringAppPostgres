@@ -33,3 +33,8 @@ build/
 .vscode/
 .mvn
 .target
+HELP.md
+hs_err_pid12192.log
+hs_err_pid17528.log
+mvnw.cmd
+mvnw
