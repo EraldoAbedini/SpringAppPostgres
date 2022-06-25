@@ -14,7 +14,6 @@ import spring.postgres.app.spring.project.services.UserService;
 public class Application implements CommandLineRunner {
     @Autowired
     UserService userService;
-    SpidService spidService;
 
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
