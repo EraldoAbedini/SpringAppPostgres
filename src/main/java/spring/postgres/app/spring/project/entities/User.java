@@ -1,14 +1,11 @@
 package spring.postgres.app.spring.project.entities;
 
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
-import lombok.experimental.SuperBuilder;
+import lombok.*;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import java.security.Timestamp;
 
 @Data
 @Entity
@@ -23,4 +20,22 @@ public class User extends Base {
     private String username;
     private String password;
     private String email;
+
+    public User(Timestamp createdAt,
+                String createdBy,
+                String name,
+                String surname,
+                String cardNo,
+                String username,
+                String password,
+                String email
+    ) {
+        super(createdAt, createdBy);
+        this.name = name;
+        this.surname = surname;
+        this.cardNo = cardNo;
+        this.username = username;
+        this.password = password;
+        this.email = email;
+    }
 }

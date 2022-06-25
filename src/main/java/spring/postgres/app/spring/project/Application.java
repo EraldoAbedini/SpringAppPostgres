@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 import spring.postgres.app.spring.project.entities.User;
 import spring.postgres.app.spring.project.services.UserService;
 
+
 @SpringBootApplication
 @RestController
 public class Application implements CommandLineRunner {
@@ -20,6 +21,6 @@ public class Application implements CommandLineRunner {
 
     @Override
     public void run(String... args) {
-        System.out.println(userService.createUser(new User("Eraldo", "Abedin", "..", "Eraldo_Abedin", "lol", "abedinieraldo@gmail.com")));
+        System.out.println(userService.createUser(new User( "Igli", "Koxha", "..", "Igli_Koxha", "lol", "abedinieraldo@gmail.com")));
     }
 }

@@ -13,7 +13,8 @@ import javax.persistence.*;
 @Table(name = "spid")
 public class Spid extends Base {
 
-    @OneToOne
+    @OneToOne(cascade = {CascadeType.ALL})
+
     private User user;
 
     @Enumerated(EnumType.STRING)

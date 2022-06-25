@@ -1,8 +1,6 @@
 package spring.postgres.app.spring.project.entities;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import lombok.experimental.SuperBuilder;
 
 import javax.persistence.GeneratedValue;
@@ -21,4 +19,9 @@ public class Base {
     private long id;
     private Timestamp createdAt;
     private String createdBy;
+
+    public Base(Timestamp createdAt, String createdBy) {
+        this.createdAt = createdAt;
+        this.createdBy = createdBy;
+    }
 }

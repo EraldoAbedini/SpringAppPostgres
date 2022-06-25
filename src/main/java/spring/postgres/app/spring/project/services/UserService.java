@@ -6,6 +6,7 @@ import spring.postgres.app.spring.project.entities.Spid;
 import spring.postgres.app.spring.project.entities.User;
 import spring.postgres.app.spring.project.repository.UserRepository;
 
+
 @Service
 public class UserService {
     @Autowired
