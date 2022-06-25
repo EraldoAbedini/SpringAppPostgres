@@ -37,4 +37,9 @@ class ApplicationTests {
         spidService.createSpid(spid);
         Assertions.assertNotNull(spidService.getSpid(spid.getId()));
     }
+
+    @Test
+    public void doesItEditUser() {
+
+    }
 }

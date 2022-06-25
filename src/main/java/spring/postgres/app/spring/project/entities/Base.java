@@ -1,13 +1,14 @@
 package spring.postgres.app.spring.project.entities;
 
 import lombok.*;
-import lombok.experimental.SuperBuilder;
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 import java.security.Timestamp;
+import java.time.Instant;
+import java.util.Date;
 
 @Data
 @MappedSuperclass
@@ -17,6 +18,7 @@ public class Base {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
+
     private Timestamp createdAt;
     private String createdBy;
 

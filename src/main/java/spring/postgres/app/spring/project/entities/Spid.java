@@ -13,9 +13,7 @@ import java.security.Timestamp;
 @NoArgsConstructor
 @Table(name = "spid")
 public class Spid extends Base {
-
     @OneToOne(cascade = {CascadeType.ALL})
-
     private User user;
 
     @Enumerated(EnumType.STRING)
@@ -24,14 +22,13 @@ public class Spid extends Base {
     @Enumerated(EnumType.STRING)
     private Type type;
 
-    public Spid(long id,
-                Timestamp createdAt,
+    public Spid(Timestamp createdAt,
                 String createdBy,
                 User user,
                 Status status,
                 Type type
     ) {
-        super(id, createdAt, createdBy);
+        super(createdAt, createdBy);
         this.user = user;
         this.status = Status.PENDING;
         this.type = type;
