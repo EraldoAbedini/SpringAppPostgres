@@ -6,7 +6,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
-import java.security.Timestamp;
+import java.sql.Time;
+import java.sql.Timestamp;
 
 
 @Data
@@ -18,10 +19,11 @@ public class Base {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    private Timestamp createdAt;
+    private java.sql.Timestamp createdAt;
     private String createdBy;
 
-    public Base(String createdBy) {
+    public Base(Timestamp createdAt, String createdBy) {
+        this.createdAt = createdAt;
         this.createdBy = createdBy;
     }
 }

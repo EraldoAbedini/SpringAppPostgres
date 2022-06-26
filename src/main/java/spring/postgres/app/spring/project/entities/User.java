@@ -5,6 +5,7 @@ import lombok.*;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import java.sql.Timestamp;
 
 @Data
 @Entity
@@ -20,15 +21,8 @@ public class User extends Base {
     private String password;
     private String email;
 
-    public User(String createdBy,
-                String name,
-                String surname,
-                String cardNo,
-                String username,
-                String password,
-                String email
-    ) {
-        super(createdBy);
+    public User(Timestamp createdAt, String createdBy, String name, String surname, String cardNo, String username, String password, String email) {
+        super(createdAt, createdBy);
         this.name = name;
         this.surname = surname;
         this.cardNo = cardNo;

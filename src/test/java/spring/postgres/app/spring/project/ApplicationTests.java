@@ -12,9 +12,13 @@ import spring.postgres.app.spring.project.entities.User;
 import spring.postgres.app.spring.project.services.SpidService;
 import spring.postgres.app.spring.project.services.UserService;
 
+import java.sql.Timestamp;
+
 @SpringBootTest(classes = {Application.class})
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class ApplicationTests {
+    long time = System.currentTimeMillis();
+    Timestamp timestamp = new java.sql.Timestamp(time);
 
     @Autowired
     private UserService userService;
@@ -25,14 +29,14 @@ class ApplicationTests {
 
     @Test
     public void doesItCreateUser() {
-        User albin = new User("Admin", "Albin", "Mema", "..", "Albin_Mema", "haskell", "albinmema@gmail");
+        User albin = new User(timestamp, "Admin", "Albin", "Mema", "..", "Albin_Mema", "haskell", "albinmema@gmail");
         userService.createUser(albin);
         Assertions.assertNotNull(userService.getUser(albin.getId()));
     }
 
     @Test
     public void doesItCreateSpid() {
-        User albin = new User("Admin", "Albin", "Mema", "..", "Albin_Mema", "haskell", "albinmema@gmail");
+        User albin = new User(timestamp, "Admin", "Albin", "Mema", "..", "Albin_Mema", "haskell", "albinmema@gmail");
         userService.createUser(albin);
         Spid spid = new Spid(albin, Status.PENDING, Type.LEVEL_1);
         spidService.createSpid(spid);
@@ -41,7 +45,7 @@ class ApplicationTests {
 
     @Test
     public void doesItDeleteSpid() {
-        User albin = new User("Admin", "Albin", "Mema", "..", "Albin_Mema", "haskell", "albinmema@gmail");
+        User albin = new User(timestamp, "Admin", "Albin", "Mema", "..", "Albin_Mema", "haskell", "albinmema@gmail");
         userService.createUser(albin);
         Spid spid = new Spid(albin, Status.PENDING, Type.LEVEL_1);
         spidService.createSpid(spid);

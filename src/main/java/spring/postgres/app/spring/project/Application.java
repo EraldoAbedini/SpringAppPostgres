@@ -12,6 +12,8 @@ import spring.postgres.app.spring.project.entities.User;
 import spring.postgres.app.spring.project.services.SpidService;
 import spring.postgres.app.spring.project.services.UserService;
 
+import java.sql.Timestamp;
+
 @SpringBootApplication
 @RestController
 public class Application implements CommandLineRunner {
@@ -27,9 +29,11 @@ public class Application implements CommandLineRunner {
 
     @Override
     public void run(String... args) {
-        User igli = new User("Admin", "Igli", "Koxha", "..", "Igli_Koxha", "lol", "iglikoxha@gmail.com");
+        long time = System.currentTimeMillis();
+        Timestamp timestamp = new java.sql.Timestamp(time);
+        User igli = new User(timestamp, "Admin", "Igli", "Koxha", "..", "Igli_Koxha", "lol", "iglikoxha@gmail.com");
         System.out.println(userService.createUser(igli));
-        Spid spid = new Spid(igli, Status.PENDING, Type.LEVEL_1);
+        Spid spid = new Spid(timestamp, "Admin", igli, Status.PENDING, Type.LEVEL_2);
         System.out.println(spidService.createSpid(spid));
     }
 }
