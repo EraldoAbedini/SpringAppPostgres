@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.web.bind.annotation.RestController;
 import spring.postgres.app.spring.project.entities.Spid;
 import spring.postgres.app.spring.project.entities.Status;
 import spring.postgres.app.spring.project.entities.Type;
@@ -15,13 +14,11 @@ import spring.postgres.app.spring.project.services.UserService;
 import java.sql.Timestamp;
 
 @SpringBootApplication
-@RestController
 public class Application implements CommandLineRunner {
     @Autowired
-    UserService userService;
-
+    public UserService userService;
     @Autowired
-    SpidService spidService;
+    public SpidService spidService;
 
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
