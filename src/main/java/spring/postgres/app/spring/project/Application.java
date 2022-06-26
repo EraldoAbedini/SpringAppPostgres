@@ -21,13 +21,13 @@ public class Application implements CommandLineRunner {
     @Autowired
     SpidService spidService;
 
-    public static void main(String[] args)   {
+    public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
     }
 
     @Override
     public void run(String... args) {
-        User igli = new User("Igli", "Koxha", "..", "Igli_Koxha", "lol", "iglikoxha@gmail.com");
+        User igli = new User("Admin", "Igli", "Koxha", "..", "Igli_Koxha", "lol", "iglikoxha@gmail.com");
         System.out.println(userService.createUser(igli));
         Spid spid = new Spid(igli, Status.PENDING, Type.LEVEL_1);
         System.out.println(spidService.createSpid(spid));

@@ -7,8 +7,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 import java.security.Timestamp;
-import java.time.Instant;
-import java.util.Date;
+
 
 @Data
 @MappedSuperclass
@@ -16,14 +15,13 @@ import java.util.Date;
 @NoArgsConstructor
 public class Base {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
     private Timestamp createdAt;
     private String createdBy;
 
-    public Base(Timestamp createdAt, String createdBy) {
-        this.createdAt = createdAt;
+    public Base(String createdBy) {
         this.createdBy = createdBy;
     }
 }

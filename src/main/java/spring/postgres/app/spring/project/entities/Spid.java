@@ -5,7 +5,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.security.Timestamp;
 
 @Data
 @Entity
@@ -22,15 +21,14 @@ public class Spid extends Base {
     @Enumerated(EnumType.STRING)
     private Type type;
 
-    public Spid(Timestamp createdAt,
-                String createdBy,
+    public Spid(String createdBy,
                 User user,
                 Status status,
                 Type type
     ) {
-        super(createdAt, createdBy);
+        super(createdBy);
         this.user = user;
-        this.status = Status.PENDING;
+        this.status = status;
         this.type = type;
     }
 }

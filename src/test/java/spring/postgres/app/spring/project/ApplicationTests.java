@@ -25,21 +25,16 @@ class ApplicationTests {
 
     @Test
     public void doesItCreateUser() {
-        User albin = new User("Albin", "Mema", "..", "Albin_Mema", "haskell", "albinmema@gmail");
+        User albin = new User("Admin", "Albin", "Mema", "..", "Albin_Mema", "haskell", "albinmema@gmail");
         userService.createUser(albin);
         Assertions.assertNotNull(userService.getUser(albin.getId()));
     }
 
     @Test
     public void doesItCreateSpid() {
-        User igli = new User("Igli", "Koxha", "..", "IgliKoxha", "iglikoxha", "iglikoxha@gmail");
+        User igli = new User("Admin", "Xhonatan", "Copani", "..", "xhonatan_copani", "xhoni", "xhoni@gmail");
         Spid spid = new Spid(igli, Status.PENDING, Type.LEVEL_1);
         spidService.createSpid(spid);
         Assertions.assertNotNull(spidService.getSpid(spid.getId()));
-    }
-
-    @Test
-    public void doesItEditUser() {
-
     }
 }
