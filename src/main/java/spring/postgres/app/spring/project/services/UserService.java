@@ -6,9 +6,14 @@ import spring.postgres.app.spring.project.entities.Spid;
 import spring.postgres.app.spring.project.entities.User;
 import spring.postgres.app.spring.project.repository.UserRepository;
 
+import java.sql.Timestamp;
+import java.util.List;
+
 
 @Service
 public class UserService {
+    long time = System.currentTimeMillis();
+    Timestamp timestamp = new java.sql.Timestamp(time);
     @Autowired
     private UserRepository userRepository;
 
@@ -16,20 +21,26 @@ public class UserService {
         return userRepository.save(user);
     }
 
+    public List<User> getAllUsers() {
+        return userRepository.findAll();
+    }
+
     public User getUser(long userId) {
         return userRepository.getReferenceById(userId);
     }
 
-    public User editUser(long id, String name, String surname, String cardNo, String username, String password, String email) {
-        User userToBeEdited = userRepository.getReferenceById(id);
-        userToBeEdited.setName(name);
-        userToBeEdited.setSurname(surname);
-        userToBeEdited.setCardNo(cardNo);
-        userToBeEdited.setUsername(username);
-        userToBeEdited.setPassword(password);
-        userToBeEdited.setEmail(email);
-        return userRepository.save(userToBeEdited);
+    public User editUser(long id, User user) {
+        User updatedUser = userRepository.getReferenceById(id);
+        updatedUser.setCreatedAt(timestamp);
+        updatedUser.setCreatedBy(user.getCreatedBy());
+        updatedUser.setName(user.getName());
+        updatedUser.setCardNo(user.getCardNo());
+        updatedUser.setUsername(user.getUsername());
+        updatedUser.setPassword(user.getPassword());
+        updatedUser.setEmail(user.getEmail());
+        return userRepository.save(updatedUser);
     }
+
 
     public void deleteUser(long id) {
         User deleteUser = userRepository.getReferenceById(id);
