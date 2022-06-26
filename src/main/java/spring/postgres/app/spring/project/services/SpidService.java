@@ -13,12 +13,12 @@ import java.util.Optional;
 public class SpidService {
 
     @Autowired
+
     private SpidRepository spidRepository;
 
     public Spid createSpid(Spid addnewspid) {
         return (addnewspid.getStatus().equals(Status.PENDING)) ? spidRepository.save(addnewspid) : null;
     }
-
 
     public List<Spid> getAllSpid() {
         return spidRepository.findAll();
@@ -30,7 +30,6 @@ public class SpidService {
     }
 
     public void deleteSpid(long id) {
-        Spid deleteSpid = spidRepository.getReferenceById(id);
         spidRepository.deleteById(id);
     }
 

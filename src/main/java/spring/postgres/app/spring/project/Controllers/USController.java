@@ -31,4 +31,16 @@ public class USController {
     public ResponseEntity<List<User>> getUsers() {
         return new ResponseEntity<>(userService.getAllUsers(), HttpStatus.OK);
     }
+
+
+    @GetMapping("/allspids")
+    public ResponseEntity<Spid> getAllSpids() {
+        return new ResponseEntity(spidService.getAllSpid(), HttpStatus.OK);
+    }
+
+    @DeleteMapping("spids/deletespid/id")
+    public ResponseEntity<Spid> deleteSpid(@PathVariable long id){
+        spidService.deleteSpid(id);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
 }
