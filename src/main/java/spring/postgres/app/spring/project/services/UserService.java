@@ -43,9 +43,9 @@ public class UserService {
 
 
     public void deleteUser(long id) {
-        User deleteUser = userRepository.getReferenceById(id);
         userRepository.deleteById(id);
     }
+
 
     public User editUserName(long id, String name) {
         User userToBeEdited = userRepository.getReferenceById(id);

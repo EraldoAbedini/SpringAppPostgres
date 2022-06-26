@@ -28,9 +28,21 @@ public class Application implements CommandLineRunner {
     public void run(String... args) {
         long time = System.currentTimeMillis();
         Timestamp timestamp = new java.sql.Timestamp(time);
-        User igli = new User(timestamp, "Admin", "Igli", "Koxha", "..", "Igli_Koxha", "lol", "iglikoxha@gmail.com");
+
+        User igli = new User(timestamp, "Admin", "Igli", "Koxha", "card14", "Igli_Koxha", "lol", "iglikoxha@gmail.com");
+        User user1 = new User(timestamp, "Admin", "User1", "user1", "card24", "User_1", "user1password", "user1@gmail.com");
+        User user2 = new User(timestamp, "Admin", "User1", "user2", "card34", "User_2", "user2password", "user2@gmail.com");
+
         System.out.println(userService.createUser(igli));
-        Spid spid = new Spid(timestamp, "Admin", igli, Status.PENDING, Type.LEVEL_2);
-        System.out.println(spidService.createSpid(spid));
+        System.out.println(userService.createUser(user1));
+        System.out.println(userService.createUser(user2));
+
+        Spid spid1 = new Spid(timestamp, "Admin", igli, Status.PENDING, Type.LEVEL_2);
+        Spid spid2 = new Spid(timestamp, "Admin", user1, Status.PENDING, Type.LEVEL_2);
+        Spid spid3 = new Spid(timestamp, "Admin", user2, Status.PENDING, Type.LEVEL_2);
+
+        System.out.println(spidService.createSpid(spid1));
+        System.out.println(spidService.createSpid(spid2));
+        System.out.println(spidService.createSpid(spid3));
     }
 }

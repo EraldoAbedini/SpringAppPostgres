@@ -1,5 +1,6 @@
 package spring.postgres.app.spring.project.services;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import spring.postgres.app.spring.project.entities.Spid;
 import spring.postgres.app.spring.project.entities.Status;
@@ -10,38 +11,35 @@ import java.util.Optional;
 
 @Service
 public class SpidService {
-    private final SpidRepository repository;
 
-    public SpidService(SpidRepository repository) {
-        this.repository = repository;
-    }
+    @Autowired
+    private SpidRepository spidRepository;
 
     public Spid createSpid(Spid addnewspid) {
-        return (addnewspid.getStatus().equals(Status.PENDING)) ? repository.save(addnewspid) : null;
+        return (addnewspid.getStatus().equals(Status.PENDING)) ? spidRepository.save(addnewspid) : null;
     }
 
-    public List<Spid> getAllSpids() {
-        return repository.findAll();
+
+    public List<Spid> getAllSpid() {
+        return spidRepository.findAll();
     }
 
     public Spid getSpid(long id) {
-        Optional<Spid> spid = repository.findById(id);
+        Optional<Spid> spid = spidRepository.findById(id);
         return spid.orElse(null);
     }
 
     public void deleteSpid(long id) {
-        Spid deleteSpid = repository.getReferenceById(id);
-        if (deleteSpid != null) repository.deleteById(id);
+        Spid deleteSpid = spidRepository.getReferenceById(id);
+        spidRepository.deleteById(id);
     }
 
     public Spid changeSpidStatus(long userId, long spidId) {
-        Spid spidEditStatus = repository.getReferenceById(spidId);
+        Spid spidEditStatus = spidRepository.getReferenceById(spidId);
         if (spidEditStatus.getUser().getId() == userId) {
             spidEditStatus.setStatus(Status.READY_FOR_REVIEW);
-            return repository.save(spidEditStatus);
+            return spidRepository.save(spidEditStatus);
         }
         return null;
     }
-
-
 }
