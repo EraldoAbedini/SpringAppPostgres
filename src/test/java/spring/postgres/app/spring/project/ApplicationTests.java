@@ -32,9 +32,20 @@ class ApplicationTests {
 
     @Test
     public void doesItCreateSpid() {
-        User igli = new User("Admin", "Xhonatan", "Copani", "..", "xhonatan_copani", "xhoni", "xhoni@gmail");
-        Spid spid = new Spid(igli, Status.PENDING, Type.LEVEL_1);
+        User albin = new User("Admin", "Albin", "Mema", "..", "Albin_Mema", "haskell", "albinmema@gmail");
+        userService.createUser(albin);
+        Spid spid = new Spid(albin, Status.PENDING, Type.LEVEL_1);
         spidService.createSpid(spid);
         Assertions.assertNotNull(spidService.getSpid(spid.getId()));
+    }
+
+    @Test
+    public void doesItDeleteSpid() {
+        User albin = new User("Admin", "Albin", "Mema", "..", "Albin_Mema", "haskell", "albinmema@gmail");
+        userService.createUser(albin);
+        Spid spid = new Spid(albin, Status.PENDING, Type.LEVEL_1);
+        spidService.createSpid(spid);
+        spidService.deleteSpid(spid.getId());
+        Assertions.assertNull(spidService.getSpid(spid.getId()));
     }
 }
